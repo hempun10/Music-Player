@@ -147,6 +147,8 @@ const updateProgressBar =(e)=>{
 const setProgressBar = (e) =>{
     const totalWidthOfSong = e.srcElement.clientWidth;
     const clickX = e.offsetX
+    const{duration} = music;
+    music.currentTime = (clickX /totalWidthOfSong) * duration;
     
 }
 
@@ -154,4 +156,5 @@ const setProgressBar = (e) =>{
 prevBtn.addEventListener('click', prevSong)
 nextBtn.addEventListener('click',nextSong)
 music.addEventListener('timeupdate',updateProgressBar)
+music.addEventListener('ended',nextSong);
 progressContainer.addEventListener('click',setProgressBar)
