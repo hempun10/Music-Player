@@ -143,7 +143,12 @@ const updateProgressBar =(e)=>{
 
     }
 }
-// 
+// Set Progress Bar
+const setProgressBar = (e) =>{
+    const totalWidthOfSong = e.srcElement.clientWidth;
+    const clickX = e.offsetX
+    
+}
 
 // Event Lsitner
 prevBtn.addEventListener('click', prevSong)
