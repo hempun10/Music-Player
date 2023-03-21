@@ -108,13 +108,45 @@ const updateProgressBar =(e)=>{
         const progressBar = (currentTime / duration)*100;
         // progress Update on DOM
         progress.style.width = `${progressBar}%`
-        //DOM Manupation for current Time and duration
-        currentTimeOfMusic.textContent = currentTime;
-        durationOfMusic.textContent = duration;
+
+        // Calcuate Duration Times in Min
+        const durationTime = Math.floor(duration / 60);
+        // Calculate Remaing Seconds For Durtation
+        let durationSec = Math.floor(duration%60);
+        // Check if Duration Time is Less than 10 Second or not
+        if(durationSec <10 ){
+            // If less then 10 add '0' in the fornt
+            durationSec = `0${durationSec}`
+        }
+        // Delay Switching duration to avoid NaN
+        if(durationSec){
+            // DOM Manuplation for duration
+            durationOfMusic.textContent = `${durationTime}:${durationSec}`;
+        }
+
+          // Calcuate Duration Times in Min
+          const currentMin = Math.floor(currentTime / 60);
+          // Calculate Remaing Seconds For Durtation
+          let currentSec = Math.floor(currentTime%60);
+          // Check if Duration Time is Less than 10 Second or not
+          if(currentSec <10 ){
+              // If less then 10 add '0' in the fornt
+              currentSec = `0${currentSec}`
+          }
+        // Delay Switching duration to avoid NaN
+        if(currentSec){
+            // DOM Manuplation for duration
+            currentTimeOfMusic.textContent = `${currentMin}:${currentSec}`;
+        }
+  
+
+
     }
 }
+// 
 
 // Event Lsitner
 prevBtn.addEventListener('click', prevSong)
 nextBtn.addEventListener('click',nextSong)
 music.addEventListener('timeupdate',updateProgressBar)
+progressContainer.addEventListener('click',setProgressBar)
